@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab6-student-registration</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* กำหนดให้ทั้งหน้าเว็บใช้ฟอนต์ Kanit */
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <nav class="sticky top-0 bg-white shadow-sm z-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-blue-600">PSU CoC</a>
+                </div>
+                <div>
+                    <a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200">ลงทะเบียน</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-2xl mx-auto mt-10 px-4 pb-10">
+        
+        <div id="form-card" class="bg-white rounded-lg shadow-md p-6 md:p-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-3">ฟอร์มลงทะเบียนนักศึกษา</h2>
+
+            <form id="student-form">
+                <div class="mb-4">
+                    <label for="fullname" class="block text-sm font-medium text-gray-700 mb-1">ชื่อ-นามสกุล</label>
+                    <input type="text" id="fullname" required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="studentid" class="block text-sm font-medium text-gray-700 mb-1">รหัสนักศึกษา</label>
+                        <input type="text" id="studentid" required
+                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="department" class="block text-sm font-medium text-gray-700 mb-1">คณะ/สาขา</label>
+                        <input type="text" id="department" required
+                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">อีเมล</label>
+                    <input type="email" id="email" required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div class="mb-8">
+                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="phone" required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <button type="submit" 
+                    class="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 transition duration-200">
+                    ยืนยันการลงทะเบียน
+                </button>
+            </form>
+        </div>
+
+        <div id="success-message" class="hidden bg-white rounded-lg shadow-md p-10 text-center">
+            <div class="flex justify-center mb-4">
+                <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">ลงทะเบียนสำเร็จ!</h2>
+            <p class="text-gray-600 mb-6">ข้อมูลของคุณถูกบันทึกเข้าสู่ระบบเรียบร้อยแล้ว</p>
+            <button onclick="location.reload()" class="text-blue-600 hover:text-blue-800 underline">
+                กลับไปหน้าลงทะเบียน
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        const form = document.getElementById('student-form');
+        const formCard = document.getElementById('form-card');
+        const successMessage = document.getElementById('success-message');
+
+        // ดักจับเหตุการณ์การกด submit
+        form.addEventListener('submit', function(event) {
+            // ป้องกันการรีโหลดหน้าเว็บ
+            event.preventDefault();
+
+            // ซ่อนฟอร์มและแสดงหน้าข้อความสำเร็จ
+            formCard.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
